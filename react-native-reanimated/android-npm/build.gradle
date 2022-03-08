@@ -3,12 +3,10 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 configurations.maybeCreate("default")
 
-def inputFile = new File(projectDir, '../../react-native/package.json')
-def json = new JsonSlurper().parseText(inputFile.text)
-def reactNativeVersion = json.version as String
+def reactNativeVersion = "0.66.2"
 def (major, minor, patch) = reactNativeVersion.tokenize('.')
 
-def engine = "jsc"
+def engine = "hermes"
 
 abstract class replaceSoTask extends DefaultTask {
     public static String appName = ":app"

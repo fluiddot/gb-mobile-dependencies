@@ -5,14 +5,15 @@ set -x
 ROOT=$(pwd)
 
 unset CI
+gradlew="../../gradlew -p ../../ -PbuildSource=True"
 
-versions=("0.67.2" "0.66.3" "0.65.1" "0.64.3" "0.63.3")
-version_name=("67" "66" "65" "64" "63")
+versions=("0.66.2")
+version_name=("66")
 
-for index in {0..4}
+for index in {0..0}
 do
   yarn add react-native@"${versions[$index]}"
-  for for_hermes in "True" "False"
+  for for_hermes in "True"
   do
     engine="jsc"
     if [ "$for_hermes" == "True" ]; then
@@ -41,9 +42,12 @@ do
     fi
     cd ../..
 
-    ./gradlew clean
+    $gradlew :react-native-reanimated:clean
+    # This task has to be explicitly run to ensure that third party NDK headers
+    # are prepared before building.
+    $gradlew :react-native-reanimated:externalNativeBuildCleanDebug
 
-    FOR_HERMES=${for_hermes} ./gradlew :assembleDebug
+    FOR_HERMES=${for_hermes} $gradlew :react-native-reanimated:assembleDebug
 
     cd ./rnVersionPatch/$versionNumber
     if [ $(find . | grep 'java') ];
