@@ -1,0 +1,28 @@
+# OS X
+.DS_Store
+
+# Android builds
+.gradle/
+
+# Local configuration file (sdk path, etc)
+local.properties
+.tool-versions
+
+# Android/IntelliJ
+build/
+.idea
+.gradle
+local.properties
+*.iml
+
+# node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# VSCode local config dir
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
