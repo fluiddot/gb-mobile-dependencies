@@ -24,7 +24,6 @@
     "type:generate:tsc": "yarn tsc",
     "type:generate:remove.ts": "find ./lib -type f -name \"*.ts\" -and -not -name \"*.d.ts\" -delete",
     "type:generate:remove.tsx": "find ./lib -type f -name \"*.tsx\" -and -not -name \"*.d.ts\" -delete",
-    "prepare": "husky install",
     "circular_dependency_check": "yarn madge --extensions js,ts,tsx --circular ./src"
   },
   "main": "lib/Animated.js",
