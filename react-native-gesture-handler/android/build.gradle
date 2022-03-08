@@ -10,6 +10,7 @@ buildscript {
     dependencies {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
+    apply from: '../../force-agp-version.gradle', to: buildscript
 }
 
 def isNewArchitectureEnabled() {
@@ -113,6 +114,13 @@ android {
                 srcDirs += 'src/paper/java'
             }
         }
+    }
+
+    packagingOptions {
+        // Exclude files to avoid 'duplicate files during packaging' errors
+        // when building an app that incorporates this package as a dependency
+        exclude 'META-INF/android_release.kotlin_module'
+
     }
 }
 

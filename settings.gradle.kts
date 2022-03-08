@@ -8,3 +8,6 @@ pluginManagement {
         google()
     }
 }
+
+include(":react-native-gesture-handler")
+project(":react-native-gesture-handler").projectDir = File(rootProject.projectDir, "react-native-gesture-handler/android")
