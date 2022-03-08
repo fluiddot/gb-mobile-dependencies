@@ -114,6 +114,13 @@ android {
             }
         }
     }
+
+    packagingOptions {
+        // Exclude files to avoid 'duplicate files during packaging' errors
+        // when building an app that incorporates this package as a dependency
+        exclude 'META-INF/android_release.kotlin_module'
+
+    }
 }
 
 def kotlin_version = safeExtGet('kotlinVersion', project.properties['RNGH_kotlinVersion'])
